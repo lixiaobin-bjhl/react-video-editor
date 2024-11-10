@@ -1,11 +1,13 @@
 import { Button } from '@/components/ui/button';
 import { DEFAULT_FONT } from '@/data/fonts';
-import { ADD_TEXT, dispatcher } from '@designcombo/core';
 import { nanoid } from 'nanoid';
+import React, { useEffect, useRef, useContext } from 'react';
+import { useAction } from '../actionContext';
 
 export const Texts = () => {
+  const { handleAction } = useAction();
   const handleAddText = () => {
-    console.log('add_text');
+    handleAction("Hello from Text component!");
     // dispatcher?.dispatch(ADD_TEXT, {
     //   payload: {
     //     id: nanoid(),
