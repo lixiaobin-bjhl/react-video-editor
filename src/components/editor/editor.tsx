@@ -6,10 +6,11 @@ import ControlList from './control-list';
 import { ControlItem } from './control-item';
 
 import useHotkeys from './use-hotkeys';
-import { useEffect } from 'react';
 import { getCompactFontData } from '@/utils/fonts';
 import { FONTS } from '@/data/fonts';
 import useDataState from '@/store/use-data-state';
+import { AVCanvas } from './av-canvas';
+import React, { useEffect, useRef, useState } from 'react';
 
 export const theme = {
   colors: {
@@ -33,13 +34,22 @@ export const theme = {
 
 const Editor = () => {
   const { setCompactFonts, setFonts } = useDataState();
-
+  const [avCvs, setAVCvs] = useState<AVCanvas | null>(null);
+  const [cvsWrapEl, setCvsWrapEl] = useState<HTMLDivElement | null>(null);
   useHotkeys();
 
   useEffect(() => {
+
     setCompactFonts(getCompactFontData(FONTS));
     setFonts(FONTS);
-  }, []);
+    if (cvsWrapEl == null) return;
+    avCvs?.destroy();
+    const cvs = new AVCanvas(cvsWrapEl, {
+      bgColor: '#ff9900',
+      width: 1280,
+      height: 720,
+    });
+  }, [cvsWrapEl]);
 
   return (
     <Provider theme={theme}>
@@ -50,12 +60,15 @@ const Editor = () => {
           <MenuItem />
           <ControlList />
           <ControlItem />
-          <Scene />
+          <div className="canvas-wrap">
+            <div ref={(el) => setCvsWrapEl(el)} className="mb-[10px]"></div>
+            </div>
+          </div>
+          {/* <Scene /> */}
         </div>
         <div className="h-80 flex" style={{ zIndex: 201 }}>
           <Timeline />
         </div>
-      </div>
     </Provider>
   );
 };
