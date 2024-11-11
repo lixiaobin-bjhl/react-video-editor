@@ -8,6 +8,13 @@ Video Editor application using React and TypeScript.
 * [webAV](https://github.com/bilibili/WebAV)
 * [react-timeline-editor](https://zdarcy.com/) 
 
+## Todo
+
+- [ ] 数据状态可恢复，将舞台信息保存起来，回显。
+- [ ] 文字、图片支持 anmiate.css
+- [ ] 完善编辑器。
+- [ ] 视频模板。
+
 
 ## ✨ Features
 

@@ -240,6 +240,9 @@ const Editor = forwardRef((props, ref) => {
                                     '示例文字',
                                     'font-size: 80px; color: red;',
                                 ),),)
+                                spr.on('propsChange', (changedProps) => {
+                                    console.log('changedProps', changedProps)
+                                })
                                 await avCvs?.addSprite(spr)
                                 addSprite2Track('4-text', spr, '文字')
                             }}
