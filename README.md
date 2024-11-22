@@ -1,7 +1,6 @@
 
 <h1 align="center">React Video Editor 在线视频编辑器</h1>
 
-<div align="center">
 Video Editor application using React and TypeScript.
 
 ## ✨ dependencies

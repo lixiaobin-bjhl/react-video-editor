@@ -10,6 +10,7 @@ export type IMenuItem =
 export interface ILayoutState {
   activeMenuItem: IMenuItem | null;
   showMenuItem: boolean;
+  controlType: string;
   showControlItem: boolean;
   showToolboxItem: boolean;
   activeToolboxItem: string | null;
@@ -17,5 +18,11 @@ export interface ILayoutState {
   setShowMenuItem: (showMenuItem: boolean) => void;
   setShowControlItem: (showControlItem: boolean) => void;
   setShowToolboxItem: (showToolboxItem: boolean) => void;
+  setControlType: (controlType: string) => void;
+
+
+  displayToolbox: boolean;
+  setDisplayToolbox: (displayToolbox: boolean) => void;
   setActiveToolboxItem: (activeToolboxItem: string | null) => void;
+
 }
