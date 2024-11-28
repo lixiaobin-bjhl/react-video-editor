@@ -105,7 +105,7 @@ const Editor = forwardRef((props, ref) => {
         console.log('addTextSprite', existSpr)
         const detail = {
             text: '示例文字',
-            fontSize: 20,
+            fontSize: 50,
             color: 'red',
             x: 50,
             y: 50,
@@ -143,8 +143,9 @@ const Editor = forwardRef((props, ref) => {
         // timeline数据清除
         const tlDataFiltered = tlData.filter((it) => it.id != (spr.id + '-' + spr.controlType))
         setTLData(tlDataFiltered)
+        console.log('rmeoveSprite', spr.id)
         // 清除原来的文字
-        avCvs.removeSprite(spr)
+        await avCvs.removeSprite(spr)
         delete trackItemsMap[spr.id]
         // 重新添加
         await addTextSprite(spr)
@@ -152,7 +153,7 @@ const Editor = forwardRef((props, ref) => {
     const handleDelSpriteByAction = async (action) => {
         const sprId = action.trackId.replace(/-\w+/, '')
         setActiveId(sprId)
-        avCvs.removeSprite(trackItemsMap[sprId])
+        avCvs.removeSprite(useEditorStore.getState().activeSprite)
         delete trackItemsMap[sprId]
         // timeline数据清除
         const tlDataFiltered = tlData.filter((it) => it.id != (action.trackId))
@@ -182,7 +183,7 @@ const Editor = forwardRef((props, ref) => {
         }
         avCvs?.destroy()
         const cvs = new AVCanvas(cvsWrapEl, {
-            bgColor: '#ff9900',
+            bgColor: '#000000',
             width: 750,
             height: 1334,
         })

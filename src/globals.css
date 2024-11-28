@@ -100,6 +100,7 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground;
   }
@@ -111,6 +112,7 @@
       column-gap: 1.5em;
       column-count: 1;
     }
+
     .masonry-sm {
       gap: 0.5rem;
       column-count: 2;

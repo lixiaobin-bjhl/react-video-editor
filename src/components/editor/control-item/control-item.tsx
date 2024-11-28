@@ -53,7 +53,6 @@ const ActiveControlItem = ({
     if (!activeSprite || !activeToolboxItem) {
         return null
     }
-    console.log(1)
     return (
         <>
             {

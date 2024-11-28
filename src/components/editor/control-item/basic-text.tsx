@@ -73,7 +73,7 @@ const BasicText = ({ trackItem }: { trackItem: ITrackItem }) => {
             else {
                 console.error('sprite not found')
             }
-        }, 500),
+        }, 1000),
         []
     )
 
